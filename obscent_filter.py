@@ -3,12 +3,12 @@ import typing
 
 class ObscentFilter:
 
-    def __init__(self, corpus: typing.Set[str], return_string: bool):
+    def __init__(self, corpus: typing.Set[str], return_string: bool) -> None:
         self.corpus = corpus
         self.return_string = return_string
 
     @staticmethod
-    def preprocessing_text(input_text: str):
+    def preprocessing_text(input_text: str) -> str:
         input_text = input_text.lower().replace('\n', ' ')
         input_text = input_text.split(' ')
         filtered_list = []
@@ -17,7 +17,7 @@ class ObscentFilter:
             filtered_list.append("".join(filtered_text))
         return " ".join(filtered_list)
 
-    def obscene_filter(self, input_string: str):
+    def obscene_filter(self, input_string: str) -> str:
         list_for_check = input_string.split()
         output_str = ''
         for word in list_for_check:
@@ -27,7 +27,7 @@ class ObscentFilter:
                 output_str += word + ' '
         return output_str
 
-    def obscent_score(self, input_string: str):
+    def obscent_score(self, input_string: str) -> int:
         list_for_check = input_string.split()
         for word in list_for_check:
             if self.preprocessing_text(word) in self.corpus:

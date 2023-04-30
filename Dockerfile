@@ -1,14 +1,12 @@
 FROM python:3.8
 
-RUN apt-get update 
+RUN apt-get update -y
+RUN apt-get install -y python-pip python-dev build-essential
 
-COPY ./ /workdir
+COPY ./ /app
 
-WORKDIR /workdir
-
-ENV TESSDATA_PREFIX=/usr/share/tesseract-ocr/4.00/tessdata/
+WORKDIR /app
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python3", "main.py"]
-
+ENTRYPOINT ["python3", "app.py"]

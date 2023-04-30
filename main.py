@@ -2,7 +2,7 @@ from obscent_filter import ObscentFilter
 from score_bred import CheckSpells
 from csv import reader
 
-PATH_CORPUS: str = r"./data/profane_corpus.csv"
+PATH_CORPUS: str = r"../scoring_text2/data/profane_corpus.csv"
 corpus_list: list = []
 with open(PATH_CORPUS, 'r', encoding='utf8') as f:
     csv_reader = reader(f)
@@ -26,6 +26,7 @@ if __name__ == "__main__":
 
         print(f"\nScore нормальности текста: {score_bred}")
         print(f"Score мата: {score_obscent}")
+        print(f"Общий score: {score_bred+score_obscent}")
         print('Отфильтрованный текст: ', filtered_text)
         if score_obscent + score_bred < 7:
             print("Пожалуйста проверь что ты написал. \n")

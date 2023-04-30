@@ -2,7 +2,7 @@ from obscent_filter import ObscentFilter
 from score_bred import CheckSpells
 from csv import reader
 
-PATH_CORPUS: str = r"../scoring_text2/data/profane_corpus.csv"
+PATH_CORPUS: str = r"../scoring_text/data/profane_corpus.csv"
 corpus_list: list = []
 with open(PATH_CORPUS, 'r', encoding='utf8') as f:
     csv_reader = reader(f)

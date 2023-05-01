@@ -40,5 +40,5 @@ def result():
 if __name__ == "__main__":
     obscent_filter = ObscentFilter(corpus_set, return_string=True)
     russian = CheckSpells()
-
+    a = 0
     app.run(debug=True, host='0.0.0.0')

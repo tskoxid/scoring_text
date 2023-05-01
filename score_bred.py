@@ -13,6 +13,8 @@ class CheckSpells:
         if len(misspelled) == 0:
             return 5
         for word in misspelled:
+            if isinstance(self.russian_checker.candidates(word), type(None)):
+                continue
             if word == list(self.russian_checker.candidates(word))[0]:
                 count_bred += 1
-        return 5*(1-count_bred/len(orig_input))
+        return 5 * (1 - count_bred / len(orig_input))

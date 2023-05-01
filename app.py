@@ -7,7 +7,7 @@ from csv import reader
 app = Flask(__name__)
 
 
-PATH_CORPUS: str = r"../scoring_text/data/profane_corpus.csv"
+PATH_CORPUS: str = r"./data/profane_corpus.csv"
 corpus_list: list = []
 with open(PATH_CORPUS, 'r', encoding='utf8') as f:
     csv_reader = reader(f)
@@ -33,7 +33,7 @@ def result():
             "result.html",
             score_bred=score_bred,
             filtered_text=filtered_text,
-            score_obscent=score_obscent
+            score_obscent="contains obscene words" if score_obscent == 0 else "Doesn't contain obscene words"
         )
 
 
@@ -41,4 +41,4 @@ if __name__ == "__main__":
     obscent_filter = ObscentFilter(corpus_set, return_string=True)
     russian = CheckSpells()
 
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
